@@ -1,3 +1,6 @@
+> [!NOTE]
+> This repo is a fork of [RGBCube/HTMNIX](https://github.com/RGBCube/HTMNIX) designed primarily to simplify and fix the HTML escaping logic. All credit goes to RGBCube for idea and the bulk of the implementation.
+
 # HTMNIX
 
 Write composeable HTML with Nix!
@@ -28,14 +31,14 @@ But before that you may want to try it for yourself!
 You can! Just enter the REPL by running this command:
 
 ```sh
-nix repl github:RGBCube/HTMNIX
+nix repl github:BenRaz123/HTMNIX
 ```
 
 ## Provided Functions
 
 These are the functions and variables provided by HTMNIX
 which will be available in every HTMNIX file and the HTMNIX REPL
-(You can enter it by running `nix repl github:RGBCube/HTMNIX`!).
+(You can enter it by running `nix repl github:BenRaz123/HTMNIX`!).
 
 - `lib`: Just the nixpkgs lib. Pretty useful to have.
 
@@ -61,7 +64,7 @@ which will be available in every HTMNIX file and the HTMNIX REPL
 > command (assuming `html.nix` has the example content):
 >
 > ```sh
-> TARGET_FILE=$(realpath html.nix) nix eval github:RGBCube/HTMNIX#result --raw --impure
+> TARGET_FILE=$(realpath html.nix) nix eval github:BenRaz123/HTMNIX#result --raw --impure
 > ```
 
 > Also keep in mind that everything is passed as an argument to the
@@ -180,6 +183,7 @@ in
 MIT License
 
 Copyright (c) 2024-present RGBCube
+Copyright (c) 2026-present Ben Raz
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
