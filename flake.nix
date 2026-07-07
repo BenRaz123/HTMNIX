@@ -12,8 +12,7 @@
     last     = n: string: lib.substring (lib.stringLength string - n) n string;
     dropLast = n: string: lib.substring 0 (lib.stringLength string - n) string;
 
-    escapix = import ./escape.nix lib;
-    inherit (escapix) escape;
+    escape = lib.strings.escapeXML;
 
     attrsetToHtmlAttrs = attrs:
       lib.concatStringsSep " "
@@ -31,7 +30,10 @@
     # When doing <name>, these won't return HTML tags.
     propagatedFindFiles = [ "nixpkgs" ];
   in {
-    inherit (escapix) raw;
+    raw = str: {
+      _type  = "__trustedString";
+      __toString = _: str;
+    };
     inherit lib;
 
     call = builtins.scopedImport self;
@@ -69,6 +71,11 @@
         else if !lib.isAttrs next
         then this // {
           outPath = (toString this) + escape (toString next);
+        }
+
+        else if (lib.isAttrs next) && (next._type or null =="__trustedString") then
+        this // {
+          outPath = (toString this) + (toString next); 
         }
         
         # An attrset. But not a tag. This means it must be HTML attributes.
