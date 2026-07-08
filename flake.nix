@@ -23,7 +23,7 @@
       then "</${dropFirst 1 name}>"
 
       else if last 1 name == "."
-      then "<${dropLast 1 name}/>"
+      then "<${dropLast 1 name}>"
 
       else "<${name}>";
 
