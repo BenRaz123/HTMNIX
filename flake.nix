@@ -35,7 +35,7 @@
       __toString = _: str;
     };
 
-    call = builtins.scopedImport self;
+    call = scopedImport self;
 
     DOCTYPE = self.__findFile __nixPath "!DOCTYPE html";
 
