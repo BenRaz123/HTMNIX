@@ -36,7 +36,7 @@
         __toString = _: str;
       };
 
-      call = scopedImport self;
+      call = scopedImport { inherit (self.lib) __findFile; };
 
       DOCTYPE = self.__findFile __nixPath "!DOCTYPE html";
 
