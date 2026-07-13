@@ -39,8 +39,6 @@
 
     DOCTYPE = self.__findFile __nixPath "!DOCTYPE html";
 
-    result = self.call /${builtins.getEnv "TARGET_FILE"};
-
     __findFile = nixPath: name: if builtins.elem name propagatedFindFiles then __findFile nixPath name else {
       outPath = dottedNameToTag name;
 
