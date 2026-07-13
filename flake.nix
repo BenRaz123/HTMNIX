@@ -1,10 +1,10 @@
 {
   description = "Write composeable HTML with Nix!";
 
-  inputs.nixpkgslib.url = "github:nix-community/nixpkgs.lib";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-  outputs = { self, nixpkgslib }: let
-    inherit (nixpkgslib) lib;
+  outputs = { self, nixpkgs }: let
+    inherit (nixpkgs) lib;
 
     first     = n: lib.substring 0 n;
     dropFirst = n: string: lib.substring n (lib.stringLength string - n) string;
@@ -34,7 +34,6 @@
       _type  = "__trustedString";
       __toString = _: str;
     };
-    inherit lib;
 
     call = builtins.scopedImport self;
 
